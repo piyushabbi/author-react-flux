@@ -1,3 +1,4 @@
 node_modules
 dist
 react-flux-building-applications
+src/noReactRouter_main.js
