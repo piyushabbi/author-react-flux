@@ -1,0 +1,29 @@
+.margin0 {
+    margin: 0;
+}
+.bg-about {
+    background-color: #6BA26B;
+}
+.bg-home {
+    background-color: #7487AD;
+}
+.bg-authors {
+    background-color: #c5db6d;
+}
+.border-none {
+    border: none;
+    border-radius: 0;
+}
+.jumbotron {
+    margin-bottom: 0;
+    min-height: 600px;
+}
+.list-id:hover {
+    text-decoration: underline;
+}
+
+@media (min-width: 768px) {}
+    .navbar-nav>li>a {
+        padding-top: 30px;
+    }
+}
