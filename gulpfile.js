@@ -1,13 +1,13 @@
 'use strict';
 
 var gulp = require('gulp'),
-    connect = require('gulp-connect'),  //Runs a local dev server
-    open = require('gulp-open'),    //Open a URL in a web browser
+    connect = require('gulp-connect'), //Runs a local dev server
+    open = require('gulp-open'), //Open a URL in a web browser
     concat = require('gulp-concat');
 
 var browserify = require('browserify'), //Bundles JS
     reactify = require('reactify'), //Transforms React JSX to JS
-    source = require('vinyl-source-stream');    //Use conventional text streams with Gulp
+    source = require('vinyl-source-stream'); //Use conventional text streams with Gulp
 
 //Config Obj
 var config = {
@@ -28,7 +28,7 @@ var config = {
 };
 
 // Start a local development server
-gulp.task('connect', function () {
+gulp.task('connect', function() {
     connect.server({
         root: ['dist'],
         port: config.port,
@@ -38,7 +38,7 @@ gulp.task('connect', function () {
 });
 
 //Open Task that runs connect task first
-gulp.task('open', ['connect'], function () {
+gulp.task('open', ['connect'], function() {
     gulp.src('dist/index.html')
         .pipe(open({
             uri: config.devBaseUrl + ':' + config.port + '/'
@@ -46,17 +46,17 @@ gulp.task('open', ['connect'], function () {
 });
 
 //html piped to dist and reloading
-gulp.task('html', function () {
+gulp.task('html', function() {
     gulp.src(config.paths.html)
         .pipe(gulp.dest(config.paths.dist))
         .pipe(connect.reload());
 });
 
 //JS Task using browserify
-gulp.task('js', function () {
+gulp.task('js', function() {
     browserify(config.paths.mainJs)
         .transform(reactify)
-        .bundle()   //Combine all js files into one
+        .bundle() //Combine all js files into one
         .on('error', console.error.bind(console))
         .pipe(source('bundle.js'))
         .pipe(gulp.dest(config.paths.dist + '/script'))
@@ -64,7 +64,7 @@ gulp.task('js', function () {
 });
 
 //CSS Task; no live reload for now
-gulp.task('css', function () {
+gulp.task('css', function() {
     gulp.src(config.paths.css)
         .pipe(concat('bundle.css'))
         .pipe(gulp.dest(config.paths.dist + '/css'))
@@ -72,7 +72,7 @@ gulp.task('css', function () {
 });
 
 //Images Task
-gulp.task('images', function () {
+gulp.task('images', function() {
     gulp.src(config.paths.images)
         .pipe(gulp.dest(config.paths.dist + '/images'))
         .pipe(connect.reload());
@@ -83,7 +83,7 @@ gulp.task('images', function () {
 });
 
 //Watch task for any changes
-gulp.task('watch', function () {
+gulp.task('watch', function() {
     gulp.watch(config.paths.html, ['html']);
     gulp.watch(config.paths.js, ['js']);
     gulp.watch(config.paths.css, ['css']);
