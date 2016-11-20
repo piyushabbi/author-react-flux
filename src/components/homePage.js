@@ -12,7 +12,7 @@ var Home = React.createClass({
                 <div className="container">
                     <h1>Records App</h1>
                     <p>This will keep track of the records.</p>
-                    <Link to="about" className="btn btn-success btn-lg">More Info</Link>
+                    <Link to="about" className="btn btn-primary btn-lg">More Info</Link>
                 </div>
             </section>
         );
