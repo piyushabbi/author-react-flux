@@ -2,6 +2,9 @@
 
 var React = require('react');
 
+var Router = require('react-router');
+var Link = Router.Link;
+
 var Home = React.createClass({
     render: function () {
         return (
@@ -9,6 +12,7 @@ var Home = React.createClass({
                 <div className="container">
                     <h1>Records App</h1>
                     <p>This will keep track of the records.</p>
+                    <Link to="about" className="btn btn-success btn-lg">More Info</Link>
                 </div>
             </section>
         );
