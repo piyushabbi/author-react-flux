@@ -19,7 +19,7 @@ var ManageAuthorPage = React.createClass({
             <section className="container">
                 <h1>Manage Author</h1>
                 <AuthorForm
-                    authorInfo="this.state.authorInfo"/>
+                    authorInfo={this.state.authorInfo}/>
             </section>
         );
     }
