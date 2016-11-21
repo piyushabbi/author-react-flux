@@ -1,6 +1,8 @@
 'use strict';
 
 var React = require('react');
+var Link = require('react-router').Link;
+
 var AuthorAPI = require('../../api/authorApi');
 var AuthorList = require('./authurList');
 
@@ -34,7 +36,10 @@ var AuthorPage = React.createClass({
             <section className="jumbotron bg-authors">
                 <div className="container">
                     <h1>Authors List</h1>
+                    <p><Link to="author" className="btn btn-default">Add More</Link></p>
+
                     <p>Following are the best peeps. Click id to view their details :-</p>
+
                     <AuthorList authors={this.state.authorData} />
                 </div>
             </section>
