@@ -15,6 +15,7 @@ var AuthorForm = React.createClass({
                     value={ this.props.authorInfo.firstName }
                     onChange={ this.props.onChange } />
 
+                {/* Custom Input Component */}
                 <Input name="lastName"
                     label="Last Name"
                     placeholder="Last Name"
@@ -25,7 +26,7 @@ var AuthorForm = React.createClass({
 
                 <button type="submit"
                     className="btn btn-primary"
-                    onClick={ this.props.onSave }>Add / Update</button>
+                    onClick={ this.props.onSave }>Save</button>
 
             </form>
         );

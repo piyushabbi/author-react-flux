@@ -1,10 +1,17 @@
 'use strict';
 
 var React = require('react');
+var Router = require('react-router');
+
 var AuthorForm = require('./authorForm');
 var AuthorApi = require('../../api/authorApi');
 
 var ManageAuthorPage = React.createClass({
+
+    mixins: [
+        Router.Navigation   //This is navigation mixin to navigate to different page on save
+    ],
+
     getInitialState: function() {
         return {
             authorInfo: {
@@ -31,6 +38,8 @@ var ManageAuthorPage = React.createClass({
     submitAuthor: function (event) {
         event.preventDefault();
         AuthorApi.saveAuthor(this.state.authorInfo);
+
+        this.transitionTo('authors');   //To route to authors page, once the save operation is carried out
     },
 
     render: function() {
