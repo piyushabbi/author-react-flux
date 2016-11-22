@@ -13,14 +13,16 @@ var AuthorForm = React.createClass({
                     label="First Name"
                     placeholder="First Name"
                     value={ this.props.authorInfo.firstName }
-                    onChange={ this.props.onChange } />
+                    onChange={ this.props.onChange }
+                    error={ this.props.errors.firstName } />
 
                 {/* Custom Input Component */}
                 <Input name="lastName"
                     label="Last Name"
                     placeholder="Last Name"
                     value={ this.props.authorInfo.lastName }
-                    onChange={ this.props.onChange } />
+                    onChange={ this.props.onChange }
+                    error={ this.props.errors.lastName } />
 
                 <br />
 

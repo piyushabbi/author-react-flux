@@ -18,7 +18,8 @@ var ManageAuthorPage = React.createClass({
                 id: '',
                 firstName: '',
                 lastName: ''
-            }
+            },
+            errors: {}
         };
     },
 
@@ -34,9 +35,33 @@ var ManageAuthorPage = React.createClass({
         });
     },
 
+    //Simple Form Validation
+    formValidate: function () {
+        var isValid = true;
+        this.state.errors = {}; //Re-initialize state to clear previous errors
+
+        if(this.state.authorInfo.firstName.length < 3) {
+            this.state.errors.firstName = 'First Name is required and should be 3 digits atleast';
+            isValid = false;
+        }
+        if(this.state.authorInfo.lastName.length < 3) {
+            this.state.errors.lastName = 'Last Name is required and should be 3 digits atleast';
+            isValid = false;
+        }
+
+        this.setState({
+            errors: this.state.errors   //To change state at any time we call setState method
+        });
+        return isValid;
+    },
+
     //Submit Handler to save changes on Author Page
     submitAuthor: function (event) {
         event.preventDefault();
+        if(!this.formValidate()) {
+            return;
+        }
+
         AuthorApi.saveAuthor(this.state.authorInfo);
 
         this.transitionTo('authors');   //To route to authors page, once the save operation is carried out
@@ -49,7 +74,8 @@ var ManageAuthorPage = React.createClass({
                 <AuthorForm
                     authorInfo={ this.state.authorInfo }
                     onChange={ this.setAuthorState }
-                    onSave={ this.submitAuthor } />
+                    onSave={ this.submitAuthor }
+                    errors={ this.state.errors } />
             </section>
         );
     }
