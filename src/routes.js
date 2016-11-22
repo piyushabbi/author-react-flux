@@ -13,6 +13,7 @@ var routeList = (
         <DefaultRoute handler={require("./components/homePage")} />
         <Route name="authors" handler={require("./components/author/authorPage")} />
         <Route name="author" path="author" handler={require("./components/author/manageAuthorPage")} />
+        <Route name="manageAuthor" path="author/:id" handler={require("./components/author/manageAuthorPage")} />
         <Route name="about" handler={require("./components/about/aboutPage")} />
         <NotFoundRoute handler={require("./components/notFoundPage")} />
     </Route>

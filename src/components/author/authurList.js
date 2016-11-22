@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react');
+var Link = require('react-router').Link;
 
 var AuthorList = React.createClass({
 
@@ -12,7 +13,9 @@ var AuthorList = React.createClass({
         var createAuthorRow = function (data) {
             return(
                 <tr key={data.id}>
-                    <td><a href={ '#/authors/' + data.id } className="list-id">{data.id}</a></td>
+                    <td>
+                        <Link to="manageAuthor" params={{id: data.id}}>{data.id}</Link>
+                    </td>
                     <td>{data.firstName} {data.lastName}</td>
                 </tr>
             );

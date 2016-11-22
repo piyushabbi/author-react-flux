@@ -32,6 +32,17 @@ var ManageAuthorPage = React.createClass({
         };
     },
 
+    //To set state before rendering occurs
+    componentWillMount: function () {
+        var authorId = this.props.params.id;    //id from url
+
+        if(authorId) {
+            this.setState({
+                authorInfo: AuthorApi.getAuthorById(authorId)
+            });
+        }
+    },
+
     //Updating state that is bubbled up from child elements. This method is called on every keypress
     setAuthorState: function (event) {
         var inputField = event.target.name;
