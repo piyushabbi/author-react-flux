@@ -4,6 +4,14 @@ var React = require('react');
 var Input = require('../common/inputText');
 
 var AuthorForm = React.createClass({
+
+    propTypes: {
+        authorInfo: React.PropTypes.object.isRequired,
+        onSave: React.PropTypes.func.isRequired,
+        onChange: React.PropTypes.func.isRequired,
+        errors: React.PropTypes.object
+    },
+
     render: function() {
         return (
             <form className="col-sm-8">
