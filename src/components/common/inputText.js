@@ -5,12 +5,12 @@ var React = require('react');
 var Input = React.createClass({
 
     propTypes: {
-        name: React.propTypes.string.isRequired,
-        label: React.propTypes.string.isRequired,
-        onChange: React.propTypes.func.isRequired,
-        placeholder: React.propTypes.string,
-        value: React.propTypes.string,
-        error: React.propTypes.string
+        name: React.PropTypes.string.isRequired,
+        label: React.PropTypes.string.isRequired,
+        onChange: React.PropTypes.func.isRequired,
+        placeholder: React.PropTypes.string,
+        value: React.PropTypes.string,
+        error: React.PropTypes.string
     },
 
     render: function() {
