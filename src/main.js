@@ -4,8 +4,8 @@ var React = require('react');
 var Router = require('react-router');
 var routeList = require('./routes');
 
-Router.run(routeList, Router.HistoryLocation, function(Handler) {
+Router.run(routeList, function(Handler) {
     React.render(<Handler/>, document.getElementById('app'));
 });
 
-//Router.HistoryLocation added to avoid # based urls
+//Router.HistoryLocation to be added next to routeList to avoid # based urls
