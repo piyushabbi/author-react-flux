@@ -12,6 +12,14 @@ var ManageAuthorPage = React.createClass({
         Router.Navigation   //This is navigation mixin to navigate to different page on save
     ],
 
+    statics: {
+        willTransitionFrom: function (transition, component) {
+            if(component.state.isFormDirty && !confirm('Leave without Saving? You will loose the data')) {
+                transition.abort();
+            }
+        }
+    },
+
     getInitialState: function() {
         return {
             authorInfo: {
@@ -19,7 +27,8 @@ var ManageAuthorPage = React.createClass({
                 firstName: '',
                 lastName: ''
             },
-            errors: {}
+            errors: {},
+            isFormDirty: false
         };
     },
 
@@ -29,6 +38,10 @@ var ManageAuthorPage = React.createClass({
         var value = event.target.value;
 
         this.state.authorInfo[inputField] = value;  //set state of that field equal to the value passed
+
+        this.setState({
+            isFormDirty: true
+        });
 
         return this.setState({
             authorInfo: this.state.authorInfo
@@ -63,6 +76,10 @@ var ManageAuthorPage = React.createClass({
         }
 
         AuthorApi.saveAuthor(this.state.authorInfo);
+
+        this.setState({
+            isFormDirty: false
+        });
 
         this.transitionTo('authors');   //To route to authors page, once the save operation is carried out
     },
