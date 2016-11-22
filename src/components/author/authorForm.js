@@ -8,19 +8,24 @@ var AuthorForm = React.createClass({
         return (
             <form className="col-sm-8">
 
+                {/* Custom Input Component */}
                 <Input name="firstName"
                     label="First Name"
                     placeholder="First Name"
                     value={ this.props.authorInfo.firstName }
                     onChange={ this.props.onChange } />
 
-                <br />
-
                 <Input name="lastName"
                     label="Last Name"
                     placeholder="Last Name"
                     value={ this.props.authorInfo.lastName }
                     onChange={ this.props.onChange } />
+
+                <br />
+
+                <button type="submit"
+                    className="btn btn-primary"
+                    onClick={ this.props.onSave }>Add / Update</button>
 
             </form>
         );

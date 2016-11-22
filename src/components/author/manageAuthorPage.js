@@ -2,6 +2,7 @@
 
 var React = require('react');
 var AuthorForm = require('./authorForm');
+var AuthorApi = require('../../api/authorApi');
 
 var ManageAuthorPage = React.createClass({
     getInitialState: function() {
@@ -26,13 +27,20 @@ var ManageAuthorPage = React.createClass({
         });
     },
 
+    //Submit Handler to save changes on Author Page
+    submitAuthor: function (event) {
+        event.preventDefault();
+        AuthorApi.saveAuthor(this.state.authorInfo);
+    },
+
     render: function() {
         return (
             <section className="container">
                 <h1>Manage Author</h1>
                 <AuthorForm
                     authorInfo={ this.state.authorInfo }
-                    onChange={ this.setAuthorState } />
+                    onChange={ this.setAuthorState }
+                    onSave={ this.submitAuthor } />
             </section>
         );
     }
